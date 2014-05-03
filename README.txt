@@ -1,1 +1,1 @@
-This contains a Python script to scrape the contents of Basketball-Reference.com for use in a neuroevolution.
+This contains a Python script to scrape the contents of Basketball-Reference.com for use a neuroevolution.
