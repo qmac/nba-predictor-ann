@@ -1,3 +1,8 @@
+'''
+Class objects for encapsulating statistical data relevant to the algorithm
+Author: Quinn McNamara
+'''
+
 class Game:
     def __init__(self, team1, team2, score1, score2):
         self.home_name = team1

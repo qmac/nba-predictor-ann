@@ -18,6 +18,7 @@ config.load('nba_predict_config')
 # set node gene type
 chromosome.node_gene_type = genome.NodeGene
 
+# scrape web for training set statistics
 stats_scraper = Scraper()
 games = stats_scraper.retrieve_games()
 teams = stats_scraper.retrieve_teams()
