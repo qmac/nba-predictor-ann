@@ -42,7 +42,7 @@ def eval_fitness(population):
 			home_win_prob = net.sactivate(inputs)[0]
 			r = random.random()
 
-			if r < home_win_prob == (game.result() > 0):
+			if (r < home_win_prob) == (game.result() > 0):
 				fitness += math.fabs(game.result())
 				num_correct += 1
 

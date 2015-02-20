@@ -20,11 +20,11 @@ class Game:
 
 class Team:
     def __init__(self, s):
-        self.ortg = s[0]
-        self.drtg = s[1]
+        self.offstat = s[0]
+        self.defstat = s[1]
 
     def offense(self):
-        return self.ortg
+        return self.offstat
 
     def defense(self):
-        return self.drtg
+        return self.defstat

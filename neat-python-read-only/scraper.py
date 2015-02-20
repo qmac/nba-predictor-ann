@@ -38,17 +38,23 @@ class Scraper:
         website = urlopen("http://www.basketball-reference.com/leagues/NBA_2015.html")
         soup = BeautifulSoup(website)
         #uses CSS selectors to retrieve stats for each team
-        team_list = soup.select("#misc tbody tr td")
-        my_text = []
+        team_list = soup.select("#team tbody tr td")
+        opp_list = soup.select("#opponent tbody tr td")
+
+        team_text = []
+        opp_text = []
+
         #strips selected list of soups of their tags
         for team in team_list:
-            my_text.append(team.get_text())
+            team_text.append(team.get_text())
+        for opp in opp_list:
+            opp_text.append(opp.get_text())
 
         #loads formatted team names and statistics into a Python dictionary to be returned
         my_teams = dict()
-        for i in range(0, len(my_text), 24):
-            team_name = my_text[i+1]
+        for i in range(0, len(team_text), 26):
+            team_name = team_text[i+1]
             if team_name[len(team_name) - 1] == "*":
                 team_name = team_name[0 : -1]
-            my_teams[team_name] = Team([float(my_text[i+8]), float(my_text[i+9])])
+            my_teams[team_name] = Team([float(team_text[i+6]), float(opp_text[i+6])])
         return my_teams
