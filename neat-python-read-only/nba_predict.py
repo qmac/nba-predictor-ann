@@ -33,10 +33,12 @@ def eval_fitness(population):
 		for game in games:
 			#print
 			#print game.home() + " vs " + game.away()
-			off_stat = teams[game.home()].offense() - teams[game.away()].offense()
-			def_stat = teams[game.home()].defense() - teams[game.away()].defense()
+			inputs = []
+			home_stats = teams[game.home()].team_stats()
+			away_stats = teams[game.away()].team_stats()
+			for i in range(0, len(home_stats)):
+				inputs.append(home_stats[i]-away_stats[i])
 
-			inputs = [off_stat, def_stat]
 			#print inputs
 
 			home_win_prob = net.sactivate(inputs)[0]

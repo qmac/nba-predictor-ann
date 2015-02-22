@@ -1,5 +1,5 @@
 [phenotype]
-input_nodes         = 2
+input_nodes         = 8
 output_nodes        = 1
 fully_connected     = 1
 max_weight          = 30
