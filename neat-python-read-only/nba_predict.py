@@ -23,11 +23,13 @@ stats_scraper = Scraper()
 games = stats_scraper.retrieve_games()
 teams = stats_scraper.retrieve_teams()
 
+MAX_FITNESS = 1000
+
 def eval_fitness(population):
 	for chromo in population:
 		net = nn.create_ffphenotype(chromo)
 
-		fitness = 0
+		fitness = MAX_FITNESS
 		possible_fitness = 0
 		num_correct = 0
 		for game in games:
@@ -41,17 +43,19 @@ def eval_fitness(population):
 
 			#print inputs
 
-			home_win_prob = net.sactivate(inputs)[0]
+			outputs = net.sactivate(inputs)
+
+			home_win_prob = outputs[0]
+			margin = outputs[1]
+
 			r = random.random()
 
 			if (r < home_win_prob) == (game.result() > 0):
-				fitness += math.fabs(game.result())
-				num_correct += 1
+				fitness -= math.fabs(margin - (math.fabs(game.result())/float(100)))
+			else:
+				fitness -= math.fabs(game.result())/float(100)
 
-			possible_fitness += math.fabs(game.result())
-		
-		#chromo.fitness = fitness / float(possible_fitness)
-		chromo.fitness = num_correct / float(len(games))
+		chromo.fitness = fitness / float(MAX_FITNESS)
 		#print "A fitness was " + str(chromo.fitness)
 
 population.Population.evaluate = eval_fitness

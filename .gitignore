@@ -255,3 +255,4 @@ neat-python-read-only/neat/visualize.py
 neat-python-read-only/neat/__init__.py
 neat-python-read-only/setup.py
 neat-python-read-only/winner_chromosome
+neat-python-read-only/winner_chromosome_mov

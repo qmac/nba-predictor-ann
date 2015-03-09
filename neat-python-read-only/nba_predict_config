@@ -1,6 +1,6 @@
 [phenotype]
 input_nodes         = 8
-output_nodes        = 1
+output_nodes        = 2
 fully_connected     = 1
 max_weight          = 30
 min_weight          = -30
@@ -11,7 +11,7 @@ weight_stdev        = 0.9
 
 [genetic]
 pop_size              = 100
-max_fitness_threshold = 0.9
+max_fitness_threshold = 0.99
 
 # Human reasoning
 prob_addconn          = 0.05
