@@ -5,7 +5,7 @@ from scraper import Scraper
 
 from neat.nn import nn_pure as nn
 
-file = open("winner_chromosome_mov")
+file = open("winner_chromosome")
 chromo = pickle.load(file)
 best_net = nn.create_ffphenotype(chromo)
 file.close()
