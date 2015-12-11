@@ -61,9 +61,9 @@ def eval_fitness(population):
 population.Population.evaluate = eval_fitness
 
 pop = population.Population()
-pop.epoch(100, report=True, save_best=False)
+pop.epoch(eval_fitness, 100, report=True, save_best=False)
 
-winner = pop.stats[0][-1]
+winner = pop.population[0]
 print 'Number of evaluations: %d' %winner.id
 
 # Visualize the winner network (requires PyDot)
